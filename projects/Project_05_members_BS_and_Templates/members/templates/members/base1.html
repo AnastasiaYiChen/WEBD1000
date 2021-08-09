@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{#Defined blocks are: title, sidebar, and content#}
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+<!--    At this point, bootstrap is already loaded, and we can apply our custom.css-->
+<!--    It is best to limit bootstrap customizations to colour, font, and other-->
+<!--    settings that would not interfere with the mobile layout of bootstrap.-->
+<!--    The "load static" tells Django where to look for static files, and-->
+<!--    only really matters in deployment, when static files might be far flung-->
+<!--    from the code.-->
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static '/members/css/custom.css' %}">
+    <link href="{% static '/members/css/rest.css' %}" rel="stylesheet" />
+    <link href="{% static '/members/css/styles.css' %}" rel="stylesheet" />
+    <link href="{% static '/members/css/layout.css' %}" rel="stylesheet" />
+<!--    <link href="{% static '/members/css/grids.css' %}" rel="stylesheet" /> -->
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+
+    <title>{% block title %}My amazing site{% endblock %}</title>
+</head>
+
+
+
+<body>
+    <header>
+        <img src="{% static '/members/images/header4.jpg'%}" alt="title" />
+        {#https://www.w3schools.com/bootstrap4/bootstrap_navbar.asp#}
+        <!-- A grey horizontal navbar that becomes vertical on small screens -->
+        <nav class="horizontalNavigation">
+            {% block sidebar %}
+                <!-- Links -->
+                <ul>
+                    <li>
+                        <a  href="{% url 'members:announcements' %}">announcements</a>
+                    </li>
+
+                    <li >
+                        <a href="{% url 'members:members' %}">members</a>
+                    </li>
+                    <li >
+                        <a href="{% url 'members:conferences' %}">conferences</a>
+                    </li>
+                    <li >
+                        <a  href="{% url 'members:events' %}">events</a>
+                    </li>
+                    <li >
+                        <a  href="{% url 'members:events' %}"> list </a>
+                    </li>
+                </ul>
+        </nav>
+            {% endblock %}
+    </header>
+    <section id="leftColumn">
+        <img src="{% static '/members/images/logo1.jpg'%}" alt="title" />
+        <h2>Lawrencetown</h2>
+        <p>Lawrencetown is a village within Annapolis County in the Annapolis Valley of Nova Scotia, Canada.
+            The town was first settled in 1760 and named after Nova Scotia governor Charles Lawrence.
+            As of 2016 the population was 516, a decrease of 17.4% over the previous five years.
+            Lawrencetown is home to Lawrencetown Consolidated School for grades P-5,and the Centre of Geographic
+            Sciences (COGS), a branch of the Nova Scotia Community College.
+            The Annapolis Valley Exhibition has been held annually since 1927 at the Lawrencetown Exhibition Grounds
+            and is a week long agricultural event.[5] In 2010, Lawrencetown was nominated as one of the top 12 towns
+            for Kraft Hockeyville, representing eastern Canada in the wildcard category. On March 27, 2010, it was
+            revealed on CBC Hockey Night In Canada that they were voted into the top five towns.</p>
+
+
+    </section>
+
+
+    {#https://www.w3schools.com/bootstrap4/bootstrap_flex.asp#}
+    <section id="rightColumn">
+    <div class="container mt-3">
+
+        <div class="d-flex p-3 bg-light text-white">
+            <div class="p-2 bg-info text-light flex-grow-1">
+                <div id="content-2">
+                    {% block content-1 %} Content-1 block {% endblock %}
+                </div>
+            </div>
+            <div class="p-2 bg-dark text-light">
+                <div id="content-1">
+                    {% block content-2 %} Content-2 block {% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <footer>
+        <nav class="verticalNavigation">
+            <h1>The Chart</h1>
+            <ul>
+                <li><a href="pc_about.html">About Us</a></li>
+                <li><a href="#"><img id="fbicon" src="fbicon.png" alt="" />Facebook</a></li>
+                <li><a href="#"><img id="twittericon" src="twittericon.png" alt="" />Twitter</a></li>
+                <li><a href="#">Reviews</a></li>
+                <li><a href="pc_info.html">Infographic</a></li>
+            </ul>
+        </nav>
+        <nav class="verticalNavigation">
+            <h1>Products</h1>
+            <ul>
+                <li><a href="#">Online Store</a></li>
+                <li><a href="#">Gift Boxes</a></li>
+                <li><a href="#">Collections</a></li>
+                <li><a href="#">Weddings</a></li>
+                <li><a href="#">Specials</a></li>
+            </ul>
+        </nav>
+        <nav class="verticalNavigation">
+            <h1>Services</h1>
+            <ul>
+                <li><a href="#">My Account</a></li>
+                <li><a href="#">Order History</a></li>
+                <li><a href="#">Tracking</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </nav>
+        <section id="contactInfo">
+            <h1>Location &amp; Hours</h1>
+            <p>414 Tree Lane <br />
+                Essex, Lawrencetown 05452<br />
+                (802) 555-0414 </p>
+            <p>Mon - Thu: 9 a.m. - 8 p.m.<br />
+                Sat - Sun: 9 a.m. - 5 p.m.</p>
+            <p>Toll Free: 1-800-555-0414</p>
+        </section>
+    </footer>
+
+</body>
+
+</html>

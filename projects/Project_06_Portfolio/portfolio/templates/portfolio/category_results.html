@@ -1,0 +1,22 @@
+{% extends "portfolio/base.html" %}
+
+{% block content-1 %}
+    <h1>Category:</h1>
+    <ul>
+        <li>{{ category.name }}</li>
+        <li>{{ category.description }}</li>
+    </ul>
+{% endblock %}
+
+{% block content-2 %}
+    <h1>Entries of this Category:</h1>
+    {% if entries %}
+        <ul>
+            {% for item in entries %}
+                <li><a href="{% url 'portfolio:entry' item.id %}">{{ item }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Not available.</p>
+    {% endif %}
+{% endblock %}

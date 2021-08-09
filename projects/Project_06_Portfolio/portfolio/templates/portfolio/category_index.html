@@ -1,0 +1,22 @@
+{% extends "portfolio/base.html" %}
+
+{% block content-1 %}
+    <h1>List of Categories:</h1>
+
+    {% if list %}
+        <ul>
+            {% for item in list %}
+                {#        item.num_entries added to the view using annotate clause#}
+                <li><a href="{% url 'portfolio:category' item.id %}">{{ item.name }}</a> ...Entries
+                    => {{ item.num_entries }} </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Not available.</p>
+    {% endif %}
+{% endblock %}
+
+
+{% block content-2 %}
+    <h4></h4>
+{% endblock %}

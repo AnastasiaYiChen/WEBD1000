@@ -1,0 +1,20 @@
+
+li a {
+    color: yellow;
+}
+
+body {
+    background: white url("../images/background.gif") no-repeat;
+}
+
+/* Footer styles */
+footer {
+   color: white;
+   background: linear-gradient(to right, rgb(153, 0, 153) 30%, black);
+   font-size: 0.65em;
+   font-style: normal;
+   height: 30px;
+   line-height: 30px;
+   text-align: center;
+
+}

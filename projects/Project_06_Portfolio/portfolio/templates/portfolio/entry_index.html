@@ -1,0 +1,21 @@
+{% extends "portfolio/base.html" %}
+
+{% block content-1 %}
+<h1>List of Events:</h1>
+
+{% if list %}
+<ul>
+    {% for item in list %}
+    <li><a href="{% url 'portfolio:entry' item.id %}">{{ item.name }}</a></li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>Not available.</p>
+{% endif %}
+
+{% endblock %}
+
+
+{% block content-2 %}
+<h4></h4>
+{% endblock %}

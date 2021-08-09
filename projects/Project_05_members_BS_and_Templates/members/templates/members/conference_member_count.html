@@ -1,0 +1,55 @@
+{% extends "members/base.html" %}
+{% block title %}yi's Member Home Oage{% endblock %}
+
+{% block content-1 %}
+    <h5>Conferences, and member count:</h5>
+    <p><h7>Lawrencetown Members </h7> </p>
+    {% if list %}
+        <ul>
+            {% for item in list %}
+                <li>{{ item.name }} , {{ item.count }}Members</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Not available.</p>
+    {% endif %}
+{% endblock %}
+
+{% block content-2 %}
+
+        {% if list %}
+
+            {#    this is the canvas where the chart will be drawn#}
+            <canvas id="myChart" width="250" height="250"></canvas>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+            {% load static %}
+            <script src="{% static '/members/js/sampleChart.js' %}"></script>
+
+            <!--You would need to fill these arrays using the data from the database-->
+            <script>
+                {# Set up values for the chart#}
+                var dataValues = [];
+                {% for item in list %}
+                    dataValues.push( {{ item.count }} )
+                {% endfor %}
+                console.log(dataValues);
+
+                var dataLabels = [];
+                {% for item in list %}
+                    dataLabels.push( "{{ item.name }}" )
+                {% endfor %}
+                console.log(dataLabels);
+
+                {# Run the chart's init() when the page is fully loaded'#}
+                $(document).ready(function () // or $(function()
+                {
+                    init();
+                });
+
+            </script>
+
+    {% else %}
+        <p>Not available.</p>
+    {% endif %}
+
+{% endblock %}

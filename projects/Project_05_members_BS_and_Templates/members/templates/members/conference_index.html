@@ -1,0 +1,34 @@
+{% extends "members/base.html" %}
+{% block title %}Russ's Member Home Oage{% endblock %}
+
+{% block content-1 %}
+<h1>List of Conferences:</h1>
+
+    <a href="{% url 'members:conferences_member_count' %}">Histogram data for conferences</a>
+
+{% if list %}
+<ul>
+    {% for item in list %}
+    <li><a href="{% url 'members:conference_results' item.id %}">{{ item.name }}</a></li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>Not available.</p>
+{% endif %}
+{% endblock %}
+
+
+{% block content-2 %}
+
+     <h2>Conference count: </h2>{{ conference_member_count }}
+
+{% if list %}
+<ul>
+    {% for item in conference_member_count %}
+    <li><a href="{% url 'members:conference_results' item.id %}">{{ item.name }}</a></li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>Not available.</p>
+{% endif %}
+{% endblock %}
